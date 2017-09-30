@@ -1,17 +1,16 @@
 
 
-def build(w, e, bridges, builtBridges=[], level=0):
+def build(bridges, builtBridges=[], level=0):
     # print(("\t"* level) + " {}".format(bridges))
     # print(("\t"* level) + "#{}".format(builtBridges))
     if bridges == []:
         return 0
     else:
         sum1 = -1
-        sum2 = -1
         if islegal(bridges[0], builtBridges):
             bridgeVal = bridges[0][2]
-            sum1 = build(w, e, bridges[1:], builtBridges + [bridges[0]], level + 1) + bridgeVal
-        sum2 = build(w, e, bridges[1:], builtBridges, level + 1)
+            sum1 = build(bridges[1:], builtBridges + [bridges[0]], level + 1) + bridgeVal
+        sum2 = build(bridges[1:], builtBridges, level + 1)
         return max(sum1, sum2)
 
 
@@ -30,7 +29,7 @@ if __name__ == "__main__":
         (1, 2, 4),
         (2, 0, 8)
     ]
-    print(build(0, 0, bridges))
+    print(build(bridges))
 
 
     print("Example 2")
@@ -41,7 +40,7 @@ if __name__ == "__main__":
         (2, 0, 8),
         (2, 2, 6)
     ]
-    print(build(0, 0, bridges))
+    print(build(bridges))
 
     print("Test 1")
     bridges = [
@@ -52,4 +51,4 @@ if __name__ == "__main__":
         (1, 1, 4)
     ]
     built = []
-    print(build(0, 0, bridges, built))
+    print(build(bridges, built))

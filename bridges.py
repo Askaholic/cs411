@@ -19,36 +19,3 @@ def islegal(w, builtBridges):
         if (w[0] <= e[0] and w[1] >= e[1]) or (w[0] >= e[0] and w[1] <= e[1]):
             return False
     return True
-
-
-if __name__ == "__main__":
-    print("Example 1")
-    bridges = [
-        (0, 1, 3),
-        (1, 1, 5),
-        (1, 2, 4),
-        (2, 0, 8)
-    ]
-    print(build(bridges))
-
-
-    print("Example 2")
-    bridges = [
-        (0, 1, 3),
-        (1, 1, 5),
-        (1, 2, 4),
-        (2, 0, 8),
-        (2, 2, 6)
-    ]
-    print(build(bridges))
-
-    print("Test 1")
-    bridges = [
-        (0, 0, 4),
-        (1, 0, 4),
-        (2, 0, 4),
-        (2, 2, 4),
-        (1, 1, 4)
-    ]
-    built = []
-    print(build(bridges, built))

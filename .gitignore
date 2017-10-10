@@ -1,3 +1,4 @@
 *.out
 *.gch
-build_test.cpp
+*/build_test.cpp
+*/contigsum_test.cpp

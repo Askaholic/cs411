@@ -2,6 +2,8 @@
 // Rohan Weeden
 // Created: October 10, 2017
 
+// Find greatest contiguous sum in a range
+
 #ifndef __con_ti_g_SUM__h_PP___
 #define __con_ti_g_SUM__h_PP___
 
@@ -12,7 +14,9 @@ template<typename RAIter>
 std::tuple<int, int, int, int> contigSumRec(RAIter first, RAIter last) {
   auto length = std::distance(first, last);
 
-  if (length == 1) {
+  if (length == 0)
+    return std::make_tuple(0, 0, 0, 0);
+  else if (length == 1) {
     auto gcs = std::max(0, *first);
     return std::make_tuple(gcs, gcs, gcs, *first);
   }
@@ -33,10 +37,10 @@ std::tuple<int, int, int, int> contigSumRec(RAIter first, RAIter last) {
 
   if (std::get<2>(second_half) == std::get<3>(second_half))
       end_gcs = std::get<2>(first_half) + std::get<2>(second_half);
-  else:
+  else
       end_gcs = std::max(std::get<2>(second_half), std::get<3>(second_half) + std::get<2>(first_half));
 
-  return std::make_tuple(std::max(std::get<0>(first_half), std::get<2>(second_half), std::get<2>(first_half) + std::get<1>(second_half)), start_gcs, end_gcs, std::get<3>(first_half) + std::get<3>(second_half));
+  return std::make_tuple(std::max(std::get<0>(first_half), std::max(std::get<2>(second_half), std::get<2>(first_half) + std::get<1>(second_half))), start_gcs, end_gcs, std::get<3>(first_half) + std::get<3>(second_half));
 }
 
 template<typename RAIter>
